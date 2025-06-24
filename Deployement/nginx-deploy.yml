@@ -20,3 +20,7 @@ spec:
         env:
           - name: STAGE
             value: Kubernetes
+          - name: PODIP
+            valueFrom:
+              fieldRef:
+                fieldPath: status.podIP
