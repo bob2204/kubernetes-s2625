@@ -29,3 +29,6 @@ spec:
               configMapKeyRef:
                 name: nginx
                 key: FORMATION
+        envFrom:
+          - configMapRef:
+              name: nginx
