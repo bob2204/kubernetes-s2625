@@ -33,6 +33,6 @@ spec:
       
       volumes:
         - name: lemp
-          hostPath:
-            path: /home/stagiaire/partage
-            type: Directory
+          nfs:
+            server: 192.168.56.200
+            path: /
