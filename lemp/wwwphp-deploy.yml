@@ -18,9 +18,8 @@ spec:
       - image: nginx:1.28
         name: nginx
         volumeMounts:
-          - name: lemp
+          - name: nginx-conf
             mountPath: /etc/nginx/conf.d
-            subPath: nginx-conf
           - name: lemp
             mountPath: /usr/share/nginx/html
             subPath: html
@@ -35,3 +34,6 @@ spec:
         - name: lemp
           persistentVolumeClaim:
             claimName: pvc1-nfs
+        - name: nginx-conf
+          configMap:
+            name: nginx-conf
