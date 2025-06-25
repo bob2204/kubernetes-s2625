@@ -33,6 +33,5 @@ spec:
       
       volumes:
         - name: lemp
-          nfs:
-            server: 192.168.56.200
-            path: /
+          persistentVolumeClaim:
+            claimName: pvc1-nfs
