@@ -17,6 +17,9 @@ spec:
       containers:
       - image: bob2606/hello-http:0.8.30
         name: hello-http
+        volumeMounts:
+          - name: status
+            mountPath: /var/lib/hello-http
         envFrom:
           - configMapRef:
               name: hello
@@ -32,3 +35,8 @@ spec:
             port: 80
           periodSeconds: 15
           failureThreshold: 2
+
+      volumes:
+        - name: status
+          persistentVolumeClaim:
+            claimName: pvc-hello-nfs
