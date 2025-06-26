@@ -21,7 +21,10 @@ spec:
           - sh
           - -c
           - |
-            while: 
+            while : 
             do
               :
             done
+        resources:
+          limits:
+            cpu: 50m
