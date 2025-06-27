@@ -1,0 +1,42 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  annotations:
+    nginx.ingress.kubernetes.io/use-regex: "true"
+    nginx.ingress.kubernetes.io/rewrite-target: /$2
+  creationTimestamp: null
+  name: wwphp
+spec:
+  ingressClassName: nginx
+  rules:
+  - host: www.stage.local
+    http:
+      paths:
+      - backend:
+          service:
+            name: wwwphp
+            port:
+              number: 80
+        path: /
+        pathType: Prefix
+  - host: hello.stage.local
+    http:
+      paths:
+      - backend:
+          service:
+            name: hello
+            port:
+              number: 80
+        path: /
+        pathType: Prefix
+  - http:
+      paths:
+        - backend:
+            service:
+              name: nginx
+              port:
+                number: 80
+          path: /nginx(/|$)(.*)
+          pathType: ImplementationSpecific
+status:
+  loadBalancer: {}
